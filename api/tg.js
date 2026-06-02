@@ -5,7 +5,12 @@ export default async function handler(req, res) {
   const TG_CHAT_ID = process.env.TG_CHAT_ID;
 
   if (!TG_TOKEN || !TG_CHAT_ID) {
-    return res.status(500).json({ ok: false, error: 'TG env missing' });
+    return res.status(500).json({
+      ok: false,
+      error: 'TG env missing',
+      tokenExists: !!TG_TOKEN,
+      chatExists: !!TG_CHAT_ID
+    });
   }
 
   const url =
@@ -16,12 +21,8 @@ export default async function handler(req, res) {
     '&text=' +
     encodeURIComponent(text);
 
-  try {
-    const tgRes = await fetch(url);
-    const data = await tgRes.json();
+  const tgRes = await fetch(url);
+  const data = await tgRes.json();
 
-    return res.status(200).json(data);
-  } catch (e) {
-    return res.status(500).json({ ok: false, error: e.message });
-  }
+  return res.status(200).json(data);
 }
