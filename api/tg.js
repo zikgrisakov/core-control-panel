@@ -68,9 +68,9 @@ export default async function handler(req, res) {
       const chatId = update.callback_query.message.chat.id;
       const action = update.callback_query.data;
 
-      if (action === 'status') {
-        await sendMessage(chatId, 'Статус: работает');
-      }
+      if (action === 'my_id') {
+  await sendMessage(chatId, 'Ваш ID: ' + chatId);
+}
 
       if (action === 'test_command') {
         await sendMessage(chatId, 'Тест команда принята');
