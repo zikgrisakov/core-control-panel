@@ -1,9 +1,9 @@
 export default async function handler(req, res) {
   const TG_TOKEN = process.env.TG_TOKEN;
   const TG_CHAT_IDS = (process.env.TG_CHAT_IDS  process.env.TG_CHAT_ID  '')
-    .split(',')
-    .map(id => id.trim())
-    .filter(Boolean);
+  .split(',')
+  .map(id => id.trim())
+  .filter(Boolean);
 
   if (!TG_TOKEN || TG_CHAT_IDS.length === 0) {
     return res.status(500).json({ ok: false, error: 'TG env missing' });
