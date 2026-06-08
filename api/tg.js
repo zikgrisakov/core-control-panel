@@ -53,10 +53,11 @@ export default async function handler(req, res) {
 
       const keyboard = {
         inline_keyboard: [
-          [{ text: 'Статус', callback_data: 'status' }],
-          [{ text: 'Тест команда', callback_data: 'test_command' }],
-          [{ text: 'Последнее событие', callback_data: 'last_event' }]
-        ]
+  [{ text: 'Статус', callback_data: 'status' }],
+  [{ text: 'Мой ID', callback_data: 'my_id' }],
+  [{ text: 'Тест команда', callback_data: 'test_command' }],
+  [{ text: 'Последнее событие', callback_data: 'last_event' }]
+]
       };
 
       const data = await sendMessage(chatId, 'Панель управления', keyboard);
