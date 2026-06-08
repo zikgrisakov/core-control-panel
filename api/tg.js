@@ -1,6 +1,6 @@
 export default async function handler(req, res) {
   const TG_TOKEN = process.env.TG_TOKEN;
-  const TG_CHAT_IDS = (process.env.TG_CHAT_IDS  process.env.TG_CHAT_ID  '')
+  const TG_CHAT_IDS = (process.env.TG_CHAT_IDS || process.env.TG_CHAT_ID || '')
   .split(',')
   .map(id => id.trim())
   .filter(Boolean);
